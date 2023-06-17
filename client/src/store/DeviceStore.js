@@ -16,7 +16,11 @@ export default class UserStore{
             {id: 1, name: "Iphone", price: 20, img: ""},
             {id: 2, name: "Iphone", price: 20, img: ""},
             {id: 3, name: "Iphone", price: 20, img: ""},
-            {id: 4, name: "Iphone", price: 20, img: ""}
+            {id: 4, name: "Iphone", price: 20, img: ""},
+            {id: 5, name: "Iphone", price: 20, img: ""},
+            {id: 6, name: "Iphone", price: 20, img: ""},
+            {id: 7, name: "Iphone", price: 20, img: ""},
+            {id: 8, name: "Iphone", price: 20, img: ""}
         ]
         this._selectedType = {}
         this._selectedBrand = {}
