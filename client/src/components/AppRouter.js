@@ -1,7 +1,7 @@
-import React, { Component, useContext } from "react";
+import React, { useContext } from "react";
 import { SHOP_ROUTE } from "../utils/consts";
 import { authRoutes, publicRoutes } from "../routes";
-import {Routes, Roure, Navigate, Route} from 'react-router-dom'
+import {Routes, Navigate, Route} from 'react-router-dom'
 import { Context } from "../index";
 
 const AppRouter = () => {
