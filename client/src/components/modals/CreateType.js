@@ -1,5 +1,6 @@
-import { Modal, Button } from "react-bootstrap";
-import { Form } from "react-router-dom";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const CreateType = ({show, onHide}) => {
     return(
