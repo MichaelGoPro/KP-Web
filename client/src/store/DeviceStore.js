@@ -2,26 +2,9 @@ import {makeAutoObservable} from "mobx"
 
 export default class UserStore{
     constructor() {
-        this._types = [
-            {id: 1, name: 'Fridges'},
-            {id: 2, name: 'Phones'}
-        ]
-        this._brands = [
-            {id: 1, name: 'Samsung'},
-            {id: 2, name: 'Apple'},
-            {id: 3, name: 'Lenovo'},
-            {id: 4, name: 'Sony'},
-        ]
-        this._devices =[
-            {id: 1, name: "Iphone", price: 20, img: ""},
-            {id: 2, name: "Iphone", price: 20, img: ""},
-            {id: 3, name: "Iphone", price: 20, img: ""},
-            {id: 4, name: "Iphone", price: 20, img: ""},
-            {id: 5, name: "Iphone", price: 20, img: ""},
-            {id: 6, name: "Iphone", price: 20, img: ""},
-            {id: 7, name: "Iphone", price: 20, img: ""},
-            {id: 8, name: "Iphone", price: 20, img: ""}
-        ]
+        this._types = []
+        this._brands = []
+        this._devices =[]
         this._selectedType = {}
         this._selectedBrand = {}
         makeAutoObservable(this)
