@@ -1,67 +1,92 @@
-import React, { useState } from "react";
-import {Container, Form, Card, Button} from 'react-bootstrap'
-import { NavLink, useLocation } from "react-router-dom";
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
-import { login, registration } from "../http/userApi";
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utils/consts';
+import { login, registration } from '../http/userApi';
+import { useContext, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Context } from '../components/Providers';
+import { useNavigate } from 'react-router-dom';
 
-const Auth = () => {
-    const location = useLocation()
-    const isLogin = location.pathname === LOGIN_ROUTE
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    
-    const click = async () => {
-        if(isLogin){
-            const response = await login()
-        }else{
-            const response = await registration(email, password)
-            console.log(response)
-        }
+const Auth = observer(() => {
+  const navigate = useNavigate();
+  const { user } = useContext(Context);
+  let location = useLocation();
+  const isLogin = location.pathname === LOGIN_ROUTE;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const click = async () => {
+    try {
+      let userData;
+      if (isLogin) {
+        userData = await login(email, password);
+      } else {
+        userData = await registration(email, password);
+      }
+      user.setUser(userData);
+      user.setIsAuth(true);
+      navigate(SHOP_ROUTE);
+    } catch (error) {
+      alert(error.response.data.message);
     }
-    
-    return (
-        <Container 
-            className="d-flex justify-content-center align-items-center"
-            style={{height: window.innerHeight - 54}}
-        >
-            <Card style={{width: "600px"}} className="p-5">
-                <h2 style={{textAlign: "center"}}>{isLogin ? "Authorization" : "Registration"}</h2>
-                <Form className="d-flex flex-column">
-                    <Form.Control
-                        className="mt-3"
-                        placeholder="Enter your email..."
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                    />
-                    <Form.Control
-                        className="mt-3"
-                        placeholder="Enter your password..."
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        type="password"
-                    />
-                    { isLogin ? 
-                        <div style={{textAlign: "center", marginTop: "3px"}}>
-                            I have no account.
-                            <NavLink to={REGISTRATION_ROUTE}>Register now</NavLink>
-                        </div>
-                        :
-                        <div style={{textAlign: "center", marginTop: "3px"}}>
-                            I have an account!
-                            <NavLink to={LOGIN_ROUTE}>Enter now</NavLink>
-                        </div>
-                    }
-                    <Button 
-                        className="m-3" 
-                        variant={"outline-success"}
-                        onClick={click()}
-                    >
-                        {isLogin? "ENTER" : "REGISTER"}
-                    </Button>
-                </Form>
-            </Card>
-        </Container>    
-    );
-};
+  };
+
+  return (
+    <Container
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: window.innerHeight - 54 }}
+    >
+      <Card
+        style={{ width: 600 }}
+        className="p-5"
+      >
+        <h2 className="m-auto">{isLogin ? 'Авторизация' : 'Регистрация'}</h2>
+        <Form className="d-flex flex-column">
+          <Form.Control
+            className="mt-3"
+            placeholder="Введите email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Form.Control
+            className="mt-3"
+            placeholder="Ведите Пароль"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+          />
+          <Row>
+            <Col>
+              {isLogin ? (
+                <div>
+                  Нет аккаунта? <Link to={REGISTRATION_ROUTE}>Зарегистрируйтесь</Link>
+                </div>
+              ) : (
+                <div>
+                  Есть аккаунт? <Link to={LOGIN_ROUTE}>Авторизируйтесь</Link>
+                </div>
+              )}
+            </Col>
+            <Col className="col-12 col-sm-6">
+              <Button
+                variant={'outline-success'}
+                className="align-self-end"
+                onClick={click}
+              >
+                {isLogin ? 'Войти' : 'Зарегистрироваться'}
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </Card>
+    </Container>
+  );
+});
 
 export default Auth;
