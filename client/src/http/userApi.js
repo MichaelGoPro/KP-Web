@@ -21,6 +21,6 @@ export const check = async () => {
     localStorage.setItem('token', data.token);
     return jwt_decode(data.token);
   } else {
-    throw Error('User is not authorized');
+    throw Error('не авторизован');
   }
 };

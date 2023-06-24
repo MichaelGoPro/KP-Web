@@ -50,13 +50,13 @@ const Auth = observer(() => {
         <Form className="d-flex flex-column">
           <Form.Control
             className="mt-3"
-            placeholder="Введите email"
+            placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <Form.Control
             className="mt-3"
-            placeholder="Ведите Пароль"
+            placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
@@ -65,11 +65,11 @@ const Auth = observer(() => {
             <Col>
               {isLogin ? (
                 <div>
-                  Нет аккаунта? <Link to={REGISTRATION_ROUTE}>Зарегистрируйтесь</Link>
+                  No accaunt? <Link to={REGISTRATION_ROUTE}>Зарегистрируйтесь</Link>
                 </div>
               ) : (
                 <div>
-                  Есть аккаунт? <Link to={LOGIN_ROUTE}>Авторизируйтесь</Link>
+                  I have an accaunt <Link to={LOGIN_ROUTE}>Авторизируйтесь</Link>
                 </div>
               )}
             </Col>
@@ -79,7 +79,7 @@ const Auth = observer(() => {
                 className="align-self-end"
                 onClick={click}
               >
-                {isLogin ? 'Войти' : 'Зарегистрироваться'}
+                {isLogin ? 'Enter' : 'Register'}
               </Button>
             </Col>
           </Row>
