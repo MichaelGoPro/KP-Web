@@ -30,7 +30,7 @@ const BasketDeviceItem = ({ device }) => {
             />
           </div>
           <div>{device.name}</div>
-          <div>Количество: {device.basket_devices.length}</div>
+          <div>Amount: {device.basket_devices.length}</div>
         </div>
       </div>
     </Col>

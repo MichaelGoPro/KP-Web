@@ -5,7 +5,7 @@ export default class UserStore {
     this._isAuth = false;
     this._user = {};
     //   mobx будет следить за изменениями этих переменных
-    //   и при изменении компоненты будут перерендываться
+    //   и при изменении компоненты будут перерендыриваться
     makeAutoObservable(this);
   }
   setIsAuth(bool) {

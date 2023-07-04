@@ -23,7 +23,7 @@ const CreateBrand = ({ show, onHide }) => {
       onHide={onHide}
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Добавить новый бренд</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Add new Brand</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -32,7 +32,7 @@ const CreateBrand = ({ show, onHide }) => {
             onChange={(e) => {
               setValue(e.target.value);
             }}
-            placeholder="Введите название бренда"
+            placeholder="Enter Brand name"
           ></Form.Control>
         </Form>
       </Modal.Body>
@@ -41,13 +41,13 @@ const CreateBrand = ({ show, onHide }) => {
           variant={'outline-danger'}
           onClick={onHide}
         >
-          Закрыть
+          Close
         </Button>
         <Button
           variant={'outline-success'}
           onClick={addBrand}
         >
-          Добавить
+          Add
         </Button>
       </Modal.Footer>
     </Modal>

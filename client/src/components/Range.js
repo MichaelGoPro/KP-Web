@@ -12,7 +12,7 @@ const Range = ({ deviceRange, setRange, value, setValue }) => {
         max={5}
       />
       <p>{value}</p>
-      <Button onClick={() => setRange(value)}> Оценить</Button>
+      <Button onClick={() => setRange(value)}> Rate</Button>
     </>
   );
 };
