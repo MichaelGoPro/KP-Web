@@ -65,11 +65,11 @@ const Auth = observer(() => {
             <Col>
               {isLogin ? (
                 <div>
-                  No accaunt? <Link to={REGISTRATION_ROUTE}>Зарегистрируйтесь</Link>
+                  No account? <Link to={REGISTRATION_ROUTE}>Registre!</Link>
                 </div>
               ) : (
                 <div>
-                  I have an accaunt <Link to={LOGIN_ROUTE}>Авторизируйтесь</Link>
+                  I have an account - <Link to={LOGIN_ROUTE}>Authorize</Link>
                 </div>
               )}
             </Col>
